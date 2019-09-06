@@ -6,6 +6,7 @@ Thank you for taking the time to review my submission. Below are a few notes on 
 
 - The requirements say to store results in memory, but doesn't provide a lot of detail. Is a session lifetime sufficient? What about caching that defaults to storing on the disk? I am proceeding on the assumption that using a server-side cache to store this info is sufficient. 
 - requirements also state that a DB is not required. Would I be penalized for using one?
+- Should I assume all times are in UTC? Or should I account for user local timezones?
 
 # Thinkful Coding Challenge
 
