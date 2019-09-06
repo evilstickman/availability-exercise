@@ -1,3 +1,12 @@
+# Matt Billock's challenge submission
+
+Thank you for taking the time to review my submission. Below are a few notes on the implementation, instructions on starting the project, and any open questions I ran in to while working on a solution. Where applicable I've stated my assumptions and documented what I can.
+
+## Open questions
+
+- The requirements say to store results in memory, but doesn't provide a lot of detail. Is a session lifetime sufficient? What about caching that defaults to storing on the disk? I am proceeding on the assumption that using a server-side cache to store this info is sufficient. 
+- requirements also state that a DB is not required. Would I be penalized for using one?
+
 # Thinkful Coding Challenge
 
 Welcome to the coding challenge portion of the Thinkful Engineering interview! Thank you for taking the time to go through this exercise and show us what you can contribute to the team.
