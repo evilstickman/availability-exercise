@@ -54,13 +54,7 @@ def fetch_availability_data():
     data = r.json()
     return data
 
-@app.route("/today", methods=["GET"])
-def today():
-    return jsonify({"today": date.today().isoformat()})
-
-@app.route("/times_by_advisor_id", methods=["GET"])
-def times_by_advisor_id():
-    data_from_endpoint = fetch_availability_data()
+def transform_availability_list(data_from_endpoint):
     provider_dict = dict()
     for day, entries in data_from_endpoint.items():
         for time, id in entries.items():
@@ -68,6 +62,16 @@ def times_by_advisor_id():
                 availability = provider_dict.get(id, [])
                 availability.append(time)
                 provider_dict[id] = availability
+    return provider_dict
+
+@app.route("/today", methods=["GET"])
+def today():
+    return jsonify({"today": date.today().isoformat()})
+
+@app.route("/times_by_advisor_id", methods=["GET"])
+def times_by_advisor_id():
+    data_from_endpoint = fetch_availability_data()
+    provider_dict = transform_availability_list(data_from_endpoint)
     return jsonify(provider_dict)
 
 @app.route("/booked_times", methods=["GET"])
