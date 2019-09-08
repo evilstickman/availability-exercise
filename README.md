@@ -6,12 +6,12 @@ I used pipenv to work around some dependency issues - pipfile is provided.
 
 ## Open questions and notes
 
-- The requirements say to store results in memory, but doesn't provide a lot of detail. Is a session lifetime sufficient? What about caching that defaults to storing on the disk? I am proceeding on the assumption that using a server-side cache to store this info is sufficient. 
+- The requirements say to store results in memory, but do not provide a lot of detail. Is a session lifetime sufficient? What about caching that defaults to storing on the disk? I am proceeding on the assumption that using a server-side cache to store this info is sufficient. 
 - requirements also state that a DB is not required. Would I be penalized for using one?
 - Should I assume all times are in UTC? Or should I account for user local timezones?
 - I've stored these using flask-caching on the back end - hopefully that meets the requirements of storing results in-memory.
 - Method "today" is the default called method, but there's no requirement to restrict output to just the current day so I simply return all availability data. Should I instead restrict it to the current day only?
-- I am not as strong on the front end as I am on the back. As such, I've only included unit tests for the back end as writing them on the front end would take a couple extra hours to learn my way through. If you like I can resubmit with unit tests present on the backend
+- I am not as strong on the front end as I am on the back. As such, I've only included unit tests for the back end as writing them on the front end would take a couple extra hours to learn my way through. If you like I can resubmit with unit tests present on the front end
 - I also did not do too much refactoring of the front end. This is definitely not production ready code - I can easily extract a couple more components, but I wanted to get the test submitted so I opted to leave those for a future iteration.
 - I also didn't do any caching of requests. Given the volume of data we're working with it didn't seem necessary. If you like I can cache the external API calls (such as to the AVAILABILITY_URL) with a suitable short-term cache.
 - Finally, this isn't really a RESTful API - this is just a JSON API. In the absence of an ORM like Django it seemed overkill to write this RESTfully, but I can rewrite this to be resource-focused if you prefer.
