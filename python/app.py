@@ -83,9 +83,12 @@ def book():
     req_data = request.get_json()
     provider_id = req_data['provider_id']
     timestamp = req_data['timestamp']
-    name = req_data['name']
+    try:
+        name = req_data['name']
+    except:
+        return "Please provide a name", 403
     if check_for_booked_time(provider_id,timestamp):
-        abort(403)
+        return "Time already booked", 403
     else:
         book_appointment(provider_id, timestamp, name)
         return "OK", 200
