@@ -70,7 +70,10 @@ def today():
 
 @app.route("/times_by_advisor_id", methods=["GET"])
 def times_by_advisor_id():
-    data_from_endpoint = fetch_availability_data()
+    try:
+        data_from_endpoint = fetch_availability_data()
+    except:
+        return "There was an error fetching availability data", 500
     provider_dict = transform_availability_list(data_from_endpoint)
     return jsonify(provider_dict)
 
@@ -83,10 +86,12 @@ def book():
     req_data = request.get_json()
     provider_id = req_data['provider_id']
     timestamp = req_data['timestamp']
+    # If name is not included, return
     try:
         name = req_data['name']
     except:
         return "Please provide a name", 403
+    # Make sure the time is available
     if check_for_booked_time(provider_id,timestamp):
         return "Time already booked", 403
     else:
