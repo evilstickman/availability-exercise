@@ -43,11 +43,9 @@ class BookedContainer extends Component {
     if(this.state) {
       booked = this.state.booked;
     }
-    console.log(booked);
 
     return (
-      booked.map((key, index) => {
-        console.log(key)
+      booked.map((key) => {
         return this.createBookingRow(key)
       }));
   }

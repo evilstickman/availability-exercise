@@ -23,7 +23,8 @@ def get_booked_dictionary():
     booked_array = cache.get(CACHE_KEY)
     if booked_array is None:
         booked_array = []
-    return map(lambda x: get_dict_for_cache_string(x),booked_array)
+    return_value = list(map(lambda x: get_dict_for_cache_string(x),booked_array))
+    return return_value
 
 def book_appointment(provider_id, timeslot, name):
     booked_string=format_cached_string(provider_id, timeslot, name)

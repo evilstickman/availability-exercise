@@ -11,7 +11,7 @@ class AvailabilityContainer extends Component {
     return(
       <ul className="list-unstyled">
         {
-          availability.map((val, i) => {
+          availability.map((val) => {
             const current_date = new Date(val);
             
             return (
@@ -29,7 +29,7 @@ class AvailabilityContainer extends Component {
     const provider_availability = this.props.provider_availability;
     if(provider_availability) {
       return(
-        Object.keys(provider_availability).map((key, index) => {
+        Object.keys(provider_availability).map((key) => {
           const availability = provider_availability[key];
           return <tr key={key}>
             <td>{key}</td>
@@ -42,9 +42,6 @@ class AvailabilityContainer extends Component {
   }
 
   render() {
-    const {
-      provider_availability
-    } = this.props;
     return (
       <availability-container>
         <h2>Available Times</h2>
